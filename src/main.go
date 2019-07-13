@@ -309,7 +309,7 @@ func startNODE(rpcuser string, rpcpass string, rpcport float64, peerport float64
       "-WindowStyle",
       "Hidden")
     cmd_instance.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
-    out, err := cmd_instance.Output()
+    _, err := cmd_instance.Output()
 
     if err != nil {
           return false;
