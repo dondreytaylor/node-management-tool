@@ -314,7 +314,6 @@ func startNODE(rpcuser string, rpcpass string, rpcport float64, peerport float64
     if err != nil {
           return false;
     } else {
-          output := string(out[:])
           return true;
     }
 
