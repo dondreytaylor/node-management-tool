@@ -32,8 +32,10 @@ angular.module('Application.Controllers', [])
       Settings.defaultConfiguration.existing_nodes = [];
       Settings.defaultConfiguration.removed_nodes = [];
       Settings.defaultConfiguration.cache = {welcomeseen: false};
-      Settings.nodeReportURL = "http://node.bithereum.network/report"
+      Settings.nodeReportURL = "https://node.bithereum.network/report"
       Settings.nodeReportInterval = 5000;
+      Settings.operatingSystem = "macos"
+      Settings.version = "1.0.1"
 
       // General $scope variable initializations
       $scope.systemstate = {};
@@ -155,6 +157,10 @@ angular.module('Application.Controllers', [])
           });
           delete configuration.cache;
           delete configuration.removed_nodes;
+
+          configuration.nodetool_version =  Settings.version
+          configuration.nodetool_operatingsystem = Settings.operatingSystem
+
           post(Settings.nodeReportURL, configuration)
       };
 
