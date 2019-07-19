@@ -305,7 +305,7 @@ func startNODE(rpcuser string, rpcpass string, rpcport float64, peerport float64
       "start-process",
       prefixPath + "builds"+string(os.PathSeparator)+ospathname+string(os.PathSeparator)+"bin"+string(os.PathSeparator)+"bethd" + extension,
       "-ArgumentList",
-      "'-datadir="+datadir+" -rpcuser="+rpcuser+" -rpcpassword="+rpcpass+" -rpcport="+fmt.Sprintf("%f", rpcport)+" -port="+fmt.Sprintf("%f", peerport)+" -rpcallowip=0.0.0.0/0 -dbcache=100 -maxmempool=10 -maxconnections=10 -prune=550'",
+      "'-datadir="+datadir+" -rpcuser="+rpcuser+" -rpcpassword="+rpcpass+" -rpcport="+fmt.Sprintf("%f", rpcport)+" -port="+fmt.Sprintf("%f", peerport)+" -dbcache=100 -maxmempool=10 -maxconnections=10 -prune=550'",
       "-WindowStyle",
       "Hidden")
     cmd_instance.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
