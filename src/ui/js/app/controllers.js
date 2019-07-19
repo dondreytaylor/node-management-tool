@@ -36,6 +36,7 @@ angular.module('Application.Controllers', [])
       Settings.nodeReportInterval = 5000;
       Settings.operatingSystem = "macos"
       Settings.version = "1.0.1"
+      Settings.identifier =  Math.random().toString(36).substr(2, 9);
 
       // General $scope variable initializations
       $scope.systemstate = {};
@@ -160,7 +161,8 @@ angular.module('Application.Controllers', [])
 
           configuration.nodetool_version =  Settings.version
           configuration.nodetool_operatingsystem = Settings.operatingSystem
-
+          configuration.nodetool_identifier = Settings.identifier;
+          
           post(Settings.nodeReportURL, configuration)
       };
 
