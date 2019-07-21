@@ -305,7 +305,7 @@ func startNODE(rpcuser string, rpcpass string, rpcport float64, peerport float64
       "start-process",
       prefixPath + "builds"+string(os.PathSeparator)+ospathname+string(os.PathSeparator)+"bin"+string(os.PathSeparator)+"bethd" + extension,
       "-ArgumentList",
-      "'-datadir="+datadir+" -rpcuser="+rpcuser+" -rpcpassword="+rpcpass+" -rpcport="+fmt.Sprintf("%f", rpcport)+" -port="+fmt.Sprintf("%f", peerport)+" -dbcache=100 -maxmempool=10 -maxconnections=10 -prune=550'",
+      "'-datadir=\""+datadir+"\" -rpcallowip=0.0.0.0/0 -rpcuser="+rpcuser+" -rpcpassword="+rpcpass+" -rpcport="+fmt.Sprintf("%f", rpcport)+" -port="+fmt.Sprintf("%f", peerport)+" -dbcache=100 -maxmempool=10 -maxconnections=10 -prune=550'",
       "-WindowStyle",
       "Hidden")
     cmd_instance.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
@@ -332,16 +332,15 @@ func stopNODE(rpcuser string, rpcpass string, rpcport float64, peerport float64)
 
     cmd_path := "C:\\Windows\\system32\\cmd.exe"
     cmd_instance := exec.Command(
-        cmd_path,
-        "/c",
-        "powershell",
-        "start-process",
-        prefixPath + "builds"+string(os.PathSeparator)+ospathname+string(os.PathSeparator)+"bin"+string(os.PathSeparator)+"beth-cli" + extension,
-        "-rpcuser="+rpcuser,
-        "-rpcpassword="+rpcpass,
-        "-rpcport="+fmt.Sprintf("%f", rpcport),
-        "-port="+fmt.Sprintf("%f", peerport),
-        "stop")
+      cmd_path,
+      "/c",
+      "powershell",
+      "start-process",
+      prefixPath + "builds"+string(os.PathSeparator)+ospathname+string(os.PathSeparator)+"bin"+string(os.PathSeparator)+"beth-cli" + extension,
+      "-ArgumentList",
+      "'-rpcuser="+rpcuser+" -rpcpassword="+rpcpass+" -rpcport="+fmt.Sprintf("%f", rpcport)+" -port="+fmt.Sprintf("%f", peerport)+" stop'",
+      "-WindowStyle",
+      "Hidden")
     cmd_instance.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
     _, err := cmd_instance.Output()
 
